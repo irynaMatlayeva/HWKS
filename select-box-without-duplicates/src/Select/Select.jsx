@@ -1,40 +1,66 @@
-import React, { useEffect, useState } from 'react';
-import { Select } from 'antd';
+import React from 'react';
+import { Form, Select, Typography } from 'antd';
 import './Select.scss';
 
+const {Title} = Typography;
 const {Option} = Select;
 
 const SelectSizesComponent = ({clusterList}) => {
-  const [optionsList, setOptionsList] = useState({})
+  let options = {
+    'size': new Map(),
+    'items': new Map(),
 
-  const uniqueSizesList = new Map(clusterList.map(item => [item['size'] && item['frame_size'], {id: item.id, frameSize: item.frame_size, size: item.size}]))
+    addToSizeMap (params) {
+      this.size.has(params.size) ? this.size.get(params.size).push(params.id) : this.size.set(params.size, [params.id])
+    },
 
-  useEffect(() => {
-    const obj = {};
-    for (const [key, value] of uniqueSizesList) obj[key] = value;
+    fill (params) {
+      this.items.set(params.id, {
+        'id': params.id,
+        'size': params.size,
+        'frameSize': params.frame_size
+      })
+      this.addToSizeMap(params)
+    },
 
-    setOptionsList(prev => ({
-      ...prev,
-      ...obj
-    }))
-  }, [clusterList])
+    getIds (params) {
+      return this.size.get(Number(params))
+    },
+
+    getItem (itemId) {
+      return this.items.get(Number(itemId));
+    },
+
+    getSortedSizeItems () {
+      const sortedKeys = [...this.size.keys()].sort((a, b) => a - b);
+      return sortedKeys.map(key => this.size.get(key).map(id => this.getItem(id)));
+    }
+  }
+  clusterList.map(item => options.fill(item))
 
   const handleChange = value => {
-    console.log(`selected ${ value }`);
+    if (value) {
+      console.log(`selected id ${ options.getIds(value) }`);
+    }
   }
 
-  const renderOptions = Object.keys(optionsList).map((val) => {
-    const {id, size, frameSize} = optionsList[val]
-    return <Option key={ id } className='select__text' value={ handleChange() }>{ frameSize ? `${ size } | ${ frameSize }` : size }</Option>
-  })
-
   return (
-    <div className='select'>
-      <h3 className='select__title'>Size</h3>
-      <Select className='select__content' defaultValue={ handleChange() || 'Please select the size' } onChange={ handleChange }>
-        { renderOptions }
+    <Form className='select' name='select-form'>
+      <Title level={ 3 } className='select__title'>Size</Title>
+      <Select className='select__content'
+              defaultValue={ handleChange() || 'Please select the size' }
+              onChange={ handleChange }>
+        {
+          [...options.getSortedSizeItems()].map(itemsGroupedBySize => {
+            const frameSizes = [...new Set(itemsGroupedBySize.map(item => item.frameSize).filter(Boolean))]
+            const {size} = itemsGroupedBySize[0]
+            return <Option key={ size } className='select__text' value={ handleChange() }>
+              { frameSizes.length ? `${ size } | ${ frameSizes }` : size }
+            </Option>
+          })
+        }
       </Select>
-    </div>
+    </Form>
   );
 }
 
