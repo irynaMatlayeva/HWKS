@@ -1,40 +1,60 @@
 import React, { useEffect, useState } from 'react';
-import { Select } from 'antd';
+import { Form, Select, Typography } from 'antd';
 import './Select.scss';
 
+const {Title} = Typography;
 const {Option} = Select;
 
 const SelectSizesComponent = ({clusterList}) => {
   const [optionsList, setOptionsList] = useState({})
 
-  const uniqueSizesList = new Map(clusterList.map(item => [item['size'] && item['frame_size'], {id: item.id, frameSize: item.frame_size, size: item.size}]))
-
   useEffect(() => {
-    const obj = {};
-    for (const [key, value] of uniqueSizesList) obj[key] = value;
+    function compositeKey (current) {
+      const {frameSize, size} = current
+      return frameSize ? `${ size } | ${ frameSize }` : size;
+    }
 
-    setOptionsList(prev => ({
-      ...prev,
-      ...obj
-    }))
+    function createObj (id, val) {
+      const {frameSize, size} = val
+      return {id, frameSize, size}
+    }
+
+    function updatedObject (acc, current) {
+      const prevState = acc[compositeKey(current)]
+      return createObj([...prevState.id, current.id], prevState)
+    }
+
+    function newObject (current) {
+      return createObj([current.id], current)
+    }
+
+    function getData (acc, current) {
+      return acc[compositeKey(current)] ? updatedObject(acc, current) : newObject(current);
+    }
+
+    const arrToObjects = clusterList.reduce((acc, current) => ({...acc, [compositeKey(current)]: getData(acc, current)}), {})
+    setOptionsList(arrToObjects)
   }, [clusterList])
 
   const handleChange = value => {
-    console.log(`selected ${ value }`);
+    if (value) {
+      console.log(`selected id ${ optionsList[value].id }`);
+    }
   }
 
-  const renderOptions = Object.keys(optionsList).map((val) => {
-    const {id, size, frameSize} = optionsList[val]
-    return <Option key={ id } className='select__text' value={ handleChange() }>{ frameSize ? `${ size } | ${ frameSize }` : size }</Option>
-  })
-
   return (
-    <div className='select'>
-      <h3 className='select__title'>Size</h3>
-      <Select className='select__content' defaultValue={ handleChange() || 'Please select the size' } onChange={ handleChange }>
-        { renderOptions }
+    <Form className='select' name='select-form'>
+      <Title level={ 3 } className='select__title'>Size</Title>
+      <Select className='select__content'
+              defaultValue={ 'Please select the size' }
+              onChange={ handleChange }>
+        { Object.keys(optionsList).map(value => {
+          return <Option key={ value } className='select__text' value={ value }>
+            { value }
+          </Option>
+        }) }
       </Select>
-    </div>
+    </Form>
   );
 }
 
