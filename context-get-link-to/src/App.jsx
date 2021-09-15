@@ -1,7 +1,15 @@
-import { useGoToLink } from './useQueryParam';
+import { useQueryParam } from './useQueryParam';
+import { QueryContext } from './index';
 
 const App = () => {
-  return useGoToLink()
+  const {getValues} = useQueryParam()
+  return (
+    <QueryContext.Consumer>
+      { ({urlRoutes}) => (
+        getValues(urlRoutes)
+      ) }
+    </QueryContext.Consumer>
+  )
 }
 
 export default App;
