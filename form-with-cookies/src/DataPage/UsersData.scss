@@ -1,0 +1,19 @@
+.user-data {
+  &__list {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__btn {
+    align-self: flex-end;
+    color: #792c9b;
+    font-size: 20px;
+  }
+}
