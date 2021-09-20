@@ -3,22 +3,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.scss';
 
-const urlRoutes = {
-  google: {
-    name: 'Google',
-    link: 'https://www.google.com'
-  },
-  yahoo: {
-    name: 'Yahoo',
-    link: 'https://www.yahoo.com'
-  },
-};
+const urlQueryParams = (url) => {
+  const params = new URLSearchParams(window.location.search);
+  const searchParam = params.get('q')
+  return `${ url }${ window.location.pathname }?q=${ searchParam }`
+}
 
 export const QueryContext = React.createContext();
 
 ReactDOM.render(
   <React.StrictMode>
-    <QueryContext.Provider value={ {urlRoutes} }>
+    <QueryContext.Provider value={ {urlQueryParams} }>
       <App/>
     </QueryContext.Provider>
   </React.StrictMode>,
