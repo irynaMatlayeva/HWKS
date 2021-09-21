@@ -1,21 +1,11 @@
 import { useContext } from 'react';
 import { QueryContext } from './index';
+import { urlRoutes } from './config';
 
 export const useLinkTo = () => {
   const {urlQueryParams} = useContext(QueryContext);
 
-  const urlRoutes = {
-    google: {
-      name: 'google',
-      link: urlQueryParams('https://www.google.com')
-    },
-    yahoo: {
-      name: 'yahoo',
-      link: urlQueryParams('https://www.yahoo.com')
-    },
-  };
-
-  const getLinkTo = (linkTo) => urlRoutes[linkTo]
+  const getLinkTo = (linkTo) => urlRoutes(urlQueryParams)[linkTo]
 
   return {
     getLinkTo
