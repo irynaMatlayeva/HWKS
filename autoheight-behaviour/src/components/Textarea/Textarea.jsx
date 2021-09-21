@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './Textarea.scss'
 
 const getCurrentHeight = (event, defaultHeight) => {
@@ -6,13 +6,16 @@ const getCurrentHeight = (event, defaultHeight) => {
   event.current.style.height = `${ event.current.scrollHeight }px`
 }
 
-const Textarea = ({textareaId, textareaClassName, textareaName, placeholderText}) => {
+const Textarea = ({textareaId, textareaClassName, textareaName, placeholderText, currentValue, setCurrentValue}) => {
   const currentHeightTextareaRef = useRef(null)
-  const [currentValue, setCurrentValue] = useState('')
 
   useEffect(() => {
     getCurrentHeight(currentHeightTextareaRef, '80')
   }, [currentValue])
+
+  const handleSetValue = (e) => {
+    setCurrentValue(e.target.value);
+  }
 
   return (
     <textarea
@@ -22,9 +25,7 @@ const Textarea = ({textareaId, textareaClassName, textareaName, placeholderText}
       name={ textareaName }
       value={ currentValue }
       placeholder={ placeholderText }
-      onChange={ e => {
-        setCurrentValue(e.target.value)
-      } }
+      onChange={ e => handleSetValue(e) }
     />
   );
 };
