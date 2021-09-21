@@ -6,7 +6,8 @@ import './index.scss';
 const urlQueryParams = (url) => {
   const params = new URLSearchParams(window.location.search);
   const searchParam = params.get('q')
-  return `${ url }${ window.location.pathname }?q=${ searchParam }`
+  return searchParam ? `${ url }${ window.location.pathname }?q=${ searchParam }` : `${ url }`
+
 }
 
 export const QueryContext = React.createContext();

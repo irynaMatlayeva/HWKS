@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { QueryContext } from './index';
 
-export const useLinkTo = (linkTo) => {
-  const [linkToSearchEngine, setLinkToSearchEngine] = useState({});
-
+export const useLinkTo = () => {
   const {urlQueryParams} = useContext(QueryContext);
 
   const urlRoutes = {
@@ -17,19 +15,9 @@ export const useLinkTo = (linkTo) => {
     },
   };
 
-  useEffect(() => {
-    const getLinkTo = () => {
-      return Object.values(urlRoutes).map((key) => {
-        if (linkTo === key.name) {
-          setLinkToSearchEngine(key)
-        }
-      })
-    }
-    getLinkTo()
-  }, [linkTo])
-
+  const getLinkTo = (linkTo) => urlRoutes[linkTo]
 
   return {
-    linkToSearchEngine
+    getLinkTo
   }
 }
