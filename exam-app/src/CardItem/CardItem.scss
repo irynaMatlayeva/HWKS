@@ -1,0 +1,102 @@
+@import 'src/assets/index.scss';
+
+.card-item {
+  list-style: none;
+  background-color: $White;
+  border-radius: 10px;
+
+  &--001 {
+    grid-area: 1 / 1 / 2 / 2;
+    @include breakpoint(md-up) {
+      grid-area: 1 / 1 / 2 / 5;
+    }
+  }
+
+  &--002 {
+    grid-area: 2 / 1 / 3 / 2;
+    @include breakpoint(md-up) {
+      grid-area: 1 / 5 / 2 / 9;
+    }
+  }
+
+  &--003 {
+    grid-area: 3 / 1 / 4 / 2;
+    @include breakpoint(md-up) {
+      grid-area: 1 / 9 / 2 / -1;
+    }
+  }
+
+  &--004 {
+    grid-area: 6 / 1 / 7 / 2;
+    @include breakpoint(md-up) {
+      grid-area: 3 / 1 / 4 / 5;
+    }
+  }
+
+  &--005 {
+    grid-area: 7 / 1 / 8 / 2;
+    @include breakpoint(md-up) {
+      grid-area: 3 / 5 / 4 / 9;
+    }
+  }
+
+  &--006 {
+    grid-area: 8 / 1 / 9 / 2;
+    @include breakpoint(md-up) {
+      grid-area: 3 / 9 / 4 / -1;
+    }
+  }
+
+
+  &__img-container {
+    margin: 0 auto 30px;
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  &__wrap {
+    padding: 0 30px;
+  }
+
+  &__title {
+    margin: 0 0 30px;
+    font-weight: 500;
+    font-size: $font-24;
+    text-transform: capitalize;
+  }
+
+  &__link {
+    color: $text-color;
+  }
+
+  &__id {
+    font-size: $font-14;
+    color: $old-price-color-text;
+    opacity: 0.7;
+  }
+
+  &__old-price {
+    margin: 0;
+    text-align: end;
+    font-size: $font-18;
+    color: $old-price-color-text;
+    text-decoration-line: line-through;
+  }
+
+  &__current-price {
+    margin: 0 0 39px;
+    font-weight: 500;
+    font-size: $font-36;
+    text-align: right;
+    color: $current-price-color-text;
+    transition: font-size 0.5s ease-in;
+
+    @include breakpoint(md-only) {
+      font-size: $font-24;
+    }
+  }
+}

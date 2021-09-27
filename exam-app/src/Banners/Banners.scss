@@ -1,0 +1,16 @@
+@import 'src/assets/index.scss';
+
+.card-banners {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $yellow-bg-color;
+  box-shadow: 6px 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: $font-64;
+  }
+}
