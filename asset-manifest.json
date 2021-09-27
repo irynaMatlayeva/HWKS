@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/HWKS/exam-app/static/css/main.8c0c09c5.chunk.css",
-    "main.js": "/HWKS/exam-app/static/js/main.9a711085.chunk.js",
-    "main.js.map": "/HWKS/exam-app/static/js/main.9a711085.chunk.js.map",
-    "runtime-main.js": "/HWKS/exam-app/static/js/runtime-main.2284142a.js",
-    "runtime-main.js.map": "/HWKS/exam-app/static/js/runtime-main.2284142a.js.map",
-    "static/js/2.e3103465.chunk.js": "/HWKS/exam-app/static/js/2.e3103465.chunk.js",
-    "static/js/2.e3103465.chunk.js.map": "/HWKS/exam-app/static/js/2.e3103465.chunk.js.map",
-    "index.html": "/HWKS/exam-app/index.html",
-    "static/css/main.8c0c09c5.chunk.css.map": "/HWKS/exam-app/static/css/main.8c0c09c5.chunk.css.map",
-    "static/js/2.e3103465.chunk.js.LICENSE.txt": "/HWKS/exam-app/static/js/2.e3103465.chunk.js.LICENSE.txt",
-    "static/media/FTL-logo-Grey.8694b918.svg": "/HWKS/exam-app/static/media/FTL-logo-Grey.8694b918.svg",
-    "static/media/pic-1.feac605f.png": "/HWKS/exam-app/static/media/pic-1.feac605f.png",
-    "static/media/pic-2.a6846581.png": "/HWKS/exam-app/static/media/pic-2.a6846581.png"
+    "main.css": "/HWKS/tree/master/exam-app/static/css/main.8c0c09c5.chunk.css",
+    "main.js": "/HWKS/tree/master/exam-app/static/js/main.9a711085.chunk.js",
+    "main.js.map": "/HWKS/tree/master/exam-app/static/js/main.9a711085.chunk.js.map",
+    "runtime-main.js": "/HWKS/tree/master/exam-app/static/js/runtime-main.7364b06a.js",
+    "runtime-main.js.map": "/HWKS/tree/master/exam-app/static/js/runtime-main.7364b06a.js.map",
+    "static/js/2.e3103465.chunk.js": "/HWKS/tree/master/exam-app/static/js/2.e3103465.chunk.js",
+    "static/js/2.e3103465.chunk.js.map": "/HWKS/tree/master/exam-app/static/js/2.e3103465.chunk.js.map",
+    "index.html": "/HWKS/tree/master/exam-app/index.html",
+    "static/css/main.8c0c09c5.chunk.css.map": "/HWKS/tree/master/exam-app/static/css/main.8c0c09c5.chunk.css.map",
+    "static/js/2.e3103465.chunk.js.LICENSE.txt": "/HWKS/tree/master/exam-app/static/js/2.e3103465.chunk.js.LICENSE.txt",
+    "static/media/FTL-logo-Grey.8694b918.svg": "/HWKS/tree/master/exam-app/static/media/FTL-logo-Grey.8694b918.svg",
+    "static/media/pic-1.feac605f.png": "/HWKS/tree/master/exam-app/static/media/pic-1.feac605f.png",
+    "static/media/pic-2.a6846581.png": "/HWKS/tree/master/exam-app/static/media/pic-2.a6846581.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2284142a.js",
+    "static/js/runtime-main.7364b06a.js",
     "static/js/2.e3103465.chunk.js",
     "static/css/main.8c0c09c5.chunk.css",
     "static/js/main.9a711085.chunk.js"
