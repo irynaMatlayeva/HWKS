@@ -1,0 +1,34 @@
+.app-header {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 2px;
+    top: 71px;
+    left: 5%;
+    right: 5%;
+    background-color: #f4f3f5;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    list-style: none;
+    padding: 30px;
+  }
+
+  &__link {
+    font-size: 25px;
+    color: #792c9b;
+    text-decoration: none;
+
+    &:hover {
+      color: #444;
+    }
+  }
+}
